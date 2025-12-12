@@ -1,0 +1,419 @@
+/* =============================
+   VARIABEL WARNA – DARK FUTURISTIC
+============================= */
+:root {
+    --bg-gradient-start: #020617;
+    --bg-gradient-end: #0b1120;
+    --card-bg: rgba(15, 23, 42, 0.82);
+    --card-border: rgba(148, 163, 184, 0.35);
+    --text-main: #e5e7eb;
+    --text-muted: #94a3b8;
+    --accent: #22d3ee;         /* cyan */
+    --accent-strong: #a855f7;  /* purple */
+    --accent-soft: rgba(34, 211, 238, 0.08);
+    --border-soft: rgba(148, 163, 184, 0.4);
+    --shadow-soft: 0 20px 60px rgba(15, 23, 42, 0.9);
+}
+
+/* =============================
+   GLOBAL
+============================= */
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, "Poppins", sans-serif;
+    color: var(--text-main);
+    background:
+        radial-gradient(circle at top left, rgba(34,211,238,0.18), transparent 55%),
+        radial-gradient(circle at bottom right, rgba(168,85,247,0.22), transparent 55%),
+        linear-gradient(135deg, var(--bg-gradient-start), var(--bg-gradient-end));
+    min-height: 100vh;
+}
+
+/* =============================
+   CONTAINER
+============================= */
+.container {
+    width: 100%;
+    max-width: 980px;
+    margin: 40px auto;
+    padding: 0 18px 40px;
+}
+
+/* =============================
+   HEADER
+============================= */
+.page-header {
+    text-align: left;
+    margin-bottom: 22px;
+    position: relative;
+}
+
+.page-header h1 {
+    font-size: 2.4rem;
+    margin: 0 0 10px;
+    color: #f9fafb;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    position: relative;
+}
+
+.page-header h1::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: -6px;
+    width: 110px;
+    height: 3px;
+    border-radius: 999px;
+    background: linear-gradient(90deg, var(--accent), var(--accent-strong));
+}
+
+.page-header .subtitle {
+    margin: 12px 0 0;
+    font-size: 0.96rem;
+    color: var(--text-muted);
+    max-width: 720px;
+    line-height: 1.7;
+}
+
+/* =============================
+   CARD DASAR (GLASSMORPHISM)
+============================= */
+.card {
+    background: var(--card-bg);
+    border-radius: 18px;
+    padding: 22px 24px;
+    margin: 18px 0;
+    border: 1px solid var(--card-border);
+    box-shadow: var(--shadow-soft);
+    backdrop-filter: blur(18px);
+}
+
+/* Garis glow tipis di tepi card */
+.card::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+    border: 1px solid transparent;
+    background: linear-gradient(135deg, rgba(34,211,238,0.2), rgba(168,85,247,0.15));
+    opacity: 0;
+    pointer-events: none;
+}
+
+/* =============================
+   INFO CARD
+============================= */
+.info-card h2,
+.form-card h2 {
+    margin: 0 0 10px;
+    font-size: 1.25rem;
+    color: #f9fafb;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.info-card h2::before {
+    content: "ⓘ";
+    font-size: 0.85rem;
+    color: var(--accent);
+}
+
+.form-card h2::before {
+    content: "⚙";
+    font-size: 0.9rem;
+    color: var(--accent-strong);
+}
+
+.info-card ol {
+    padding-left: 20px;
+    margin: 10px 0 16px;
+}
+
+.info-card ol li {
+    margin-bottom: 6px;
+    color: var(--text-muted);
+    line-height: 1.5;
+    font-size: 0.94rem;
+}
+
+.info-card ul {
+    padding-left: 20px;
+    margin: 0 0 10px;
+}
+
+.info-card ul li {
+    margin-bottom: 5px;
+    color: var(--text-muted);
+    line-height: 1.4;
+    font-size: 0.9rem;
+}
+
+.info-card code {
+    background: rgba(15, 23, 42, 0.9);
+    padding: 2px 5px;
+    border-radius: 5px;
+    font-size: 0.86rem;
+}
+
+/* Highlight note */
+.note {
+    margin-top: 14px;
+    padding: 10px 12px;
+    border-radius: 10px;
+    background: radial-gradient(circle at left, rgba(34,211,238,0.2), transparent 65%);
+    border: 1px solid rgba(148, 163, 184, 0.4);
+    font-size: 0.88rem;
+    color: #e5e7eb;
+}
+
+/* =============================
+   FORM PREDIKSI
+============================= */
+.form-card p {
+    margin-top: 0;
+    font-size: 0.92rem;
+    color: var(--text-muted);
+}
+
+.prediction-form {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.prediction-form label {
+    font-size: 0.88rem;
+    font-weight: 600;
+    color: #e5e7eb;
+    margin-top: 6px;
+}
+
+.prediction-form input,
+.prediction-form select {
+    width: 100%;
+    padding: 10px 12px;
+    border-radius: 10px;
+    border: 1px solid var(--border-soft);
+    outline: none;
+    background: rgba(15, 23, 42, 0.85);
+    font-size: 0.95rem;
+    color: #f9fafb;
+    transition: border-color 0.18s ease, box-shadow 0.18s ease, background 0.18s ease, transform 0.12s ease;
+}
+
+.prediction-form input:focus,
+.prediction-form select:focus {
+    border-color: var(--accent);
+    box-shadow: 0 0 0 1px rgba(34, 211, 238, 0.45);
+    background: #020617;
+    transform: translateY(-1px);
+}
+
+.prediction-form input::placeholder {
+    color: #64748b;
+}
+
+.prediction-form button {
+    margin-top: 10px;
+    padding: 11px 14px;
+    border-radius: 999px;
+    border: none;
+    background: radial-gradient(circle at top left, var(--accent), var(--accent-strong));
+    color: #f9fafb;
+    font-weight: 600;
+    font-size: 0.98rem;
+    cursor: pointer;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    box-shadow: 0 14px 35px rgba(34, 197, 235, 0.45);
+    transition: transform 0.15s ease, box-shadow 0.15s ease, filter 0.15s ease;
+}
+
+.prediction-form button:hover {
+    transform: translateY(-1.5px);
+    filter: brightness(1.07);
+    box-shadow: 0 22px 50px rgba(59, 130, 246, 0.6);
+}
+
+.prediction-form button:active {
+    transform: translateY(0);
+    box-shadow: 0 8px 20px rgba(15, 23, 42, 0.9);
+}
+
+.hint {
+    font-size: 0.78rem;
+    color: #9ca3af;
+}
+
+/* checkbox persetujuan */
+.agreement {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-top: 4px;
+}
+
+.agreement input {
+    width: 16px;
+    height: 16px;
+    accent-color: var(--accent);
+}
+
+.agreement label {
+    font-size: 0.82rem;
+    color: var(--text-muted);
+}
+
+/* =============================
+   TABEL (untuk result.html)
+============================= */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 14px;
+    border-radius: 14px;
+    overflow: hidden;
+    background: rgba(15, 23, 42, 0.9);
+    border: 1px solid rgba(51, 65, 85, 0.9);
+}
+
+table thead {
+    background: linear-gradient(135deg, rgba(34,211,238,0.35), rgba(168,85,247,0.5));
+    color: #f9fafb;
+}
+
+table th,
+table td {
+    padding: 10px 12px;
+    font-size: 0.88rem;
+    text-align: left;
+}
+
+table tbody tr:nth-child(even) {
+    background-color: rgba(15, 23, 42, 0.95);
+}
+
+table tbody tr:nth-child(odd) {
+    background-color: rgba(15, 23, 42, 0.85);
+}
+
+table tbody tr:hover {
+    background: radial-gradient(circle at left, rgba(34,211,238,0.2), transparent 70%);
+}
+
+/* =============================
+   BUTTON BACK (result.html)
+============================= */
+.btn-back {
+    display: inline-block;
+    margin-top: 18px;
+    padding: 9px 16px;
+    border-radius: 999px;
+    background: rgba(15,23,42,0.9);
+    border: 1px solid rgba(148, 163, 184, 0.6);
+    color: #e5e7eb;
+    text-decoration: none;
+    font-size: 0.9rem;
+    font-weight: 500;
+    transition: background 0.15s ease, color 0.15s ease, box-shadow 0.15s ease, transform 0.12s ease;
+}
+
+.btn-back:hover {
+    background: radial-gradient(circle at top left, rgba(34,211,238,0.28), rgba(15,23,42,0.95));
+    color: #f9fafb;
+    box-shadow: 0 14px 32px rgba(15, 23, 42, 0.9);
+    transform: translateY(-1px);
+}
+
+/* =============================
+   RESPONSIVE
+============================= */
+
+/* Tablet dan layar sedang */
+@media (max-width: 900px) {
+    .container {
+        margin: 28px auto;
+        padding: 0 14px 28px;
+    }
+
+    .page-header h1 {
+        font-size: 2rem;
+    }
+
+    .card {
+        margin: 14px 0;
+    }
+}
+
+/* HP besar / layar kecil */
+@media (max-width: 640px) {
+    .container {
+        margin-top: 22px;
+        margin-bottom: 24px;
+        padding: 0 12px 24px;
+    }
+
+    .page-header h1 {
+        font-size: 1.7rem;
+    }
+
+    .page-header .subtitle {
+        font-size: 0.88rem;
+    }
+
+    .card {
+        padding: 16px 14px;
+        border-radius: 14px;
+    }
+
+    .info-card h2,
+    .form-card h2 {
+        font-size: 1.05rem;
+    }
+
+    .prediction-form button {
+        width: 100%;
+    }
+
+    /* Tabel di-scroll horizontal kalau sempit */
+    table {
+        display: block;
+        width: 100%;
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
+    }
+
+    table th,
+    table td {
+        white-space: nowrap;
+    }
+}
+
+/* HP sangat kecil */
+@media (max-width: 420px) {
+    .page-header h1 {
+        font-size: 1.5rem;
+    }
+
+    .page-header .subtitle {
+        font-size: 0.8rem;
+    }
+
+    .prediction-form input,
+    .prediction-form select {
+        font-size: 0.84rem;
+        padding: 8px 10px;
+    }
+
+    .prediction-form button {
+        font-size: 0.88rem;
+        padding: 9px 11px;
+    }
+}

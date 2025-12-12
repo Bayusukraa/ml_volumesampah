@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <!-- penting untuk responsive -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Prediksi Volume Sampah TPA</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='index.css') }}">
+</head>
+<body>
+<div class="container">
+
+    <!-- HEADER / JUDUL -->
+    <header class="page-header">
+        <h1>Prediksi Volume Sampah TPA</h1>
+        <p class="subtitle">
+            Aplikasi ini menggunakan berbagai algoritma <strong>Machine Learning</strong>
+            untuk memprediksi timbulan sampah di Tempat Pembuangan Akhir (TPA)
+            berdasarkan data historis tahunan.
+        </p>
+    </header>
+
+    <!-- INFORMASI & PERATURAN -->
+    <section class="card info-card">
+        <h2>Panduan Penggunaan</h2>
+        <ol>
+            <li>Siapkan file <strong>dataset</strong> dalam format <code>.csv</code>.</li>
+            <li>Pastikan dataset berisi minimal <strong>3 tahun data</strong> agar model dapat belajar pola.</li>
+            <li>Pilih <strong>model prediksi</strong> yang ingin digunakan.</li>
+            <li>Opsional: isi <strong>tahun mulai</strong> untuk menentukan titik awal prediksi.</li>
+            <li>Tentukan <strong>berapa tahun ke depan</strong> yang ingin diprediksi.</li>
+            <li>Klik tombol <strong>“Proses &amp; Prediksi”</strong> untuk melihat hasil prediksi.</li>
+        </ol>
+
+        <h3>Format Dataset yang Didukung</h3>
+        <ul>
+            <li><strong>Format 1 (disarankan):</strong> <code>tahun, volume_ton</code><br>
+                Sistem akan mengubah otomatis menjadi:
+                <code>tanggal (YYYY-01-01)</code> dan <code>volume</code>.
+            </li>
+            <li><strong>Format 2:</strong> <code>tanggal, volume</code> dengan format tanggal
+                <code>YYYY-MM-DD</code>.
+            </li>
+        </ul>
+
+        <p class="note">
+            <strong>Catatan:</strong> Hasil prediksi bersifat estimasi berdasarkan pola historis,
+            bukan angka resmi untuk penetapan kebijakan.
+        </p>
+    </section>
+
+    <!-- FORM PREDIKSI -->
+    <section class="card form-card">
+        <h2>Formulir Prediksi</h2>
+        <p>Lengkapi formulir berikut untuk menjalankan proses prediksi volume sampah tahunan.</p>
+
+        <form action="/" method="POST" enctype="multipart/form-data" class="prediction-form">
+
+            <!-- Upload dataset -->
+            <label>Dataset (CSV):</label>
+            <input type="file" name="dataset" accept=".csv" required>
+
+            <!-- Jenis model -->
+             
+            <label>Pilih Model:</label>
+            <select name="model_type" required>
+                <option value="linear_regression">Linear Regression (baseline)</option>
+                <option value="random_forest">Random Forest Regressor</option>
+                <option value="decision_tree">Decision Tree Regressor</option>
+                <option value="ridge">Ridge Regression</option>
+                <option value="lasso">Lasso Regression</option>
+            </select>
+            <p class="hint">
+                Linear Regression cocok untuk tren stabil. Random Forest / Decision Tree lebih fleksibel.
+                Ridge &amp; Lasso menambahkan regularisasi untuk mengurangi overfitting.
+            </p>
+
+            <!-- Tahun awal prediksi -->
+            <label>Mulai dari tahun berapa? <span class="hint">(opsional)</span></label>
+            <input type="number" name="start_year" placeholder="Misal: 2020">
+
+            <!-- Input Tahun -->
+            <label>Jumlah <strong>tahun</strong> yang ingin diprediksi:</label>
+            <input type="number" name="years_ahead" min="1" max="20" value="1" required>
+
+            <!-- Checkbox persetujuan (opsional) -->
+            <div class="agreement">
+                <input type="checkbox" id="agree" name="agree">
+                <label for="agree">Saya memahami bahwa hasil prediksi hanya bersifat estimasi.</label>
+            </div>
+
+            <button type="submit">Proses &amp; Prediksi</button>
+        </form>
+    </section>
+
+</div>
+</body>
+</html>

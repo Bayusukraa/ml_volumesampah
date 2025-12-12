@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <title>Hasil Prediksi - {{ tpa_name }}</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='index.css') }}">
+</head>
+<body>
+<div class="container">
+    <h1>Hasil Prediksi Volume Sampah</h1>
+    <p><strong>TPA:</strong> {{ tpa_name }}</p>
+    <p><strong>Model:</strong> {{ model_type }}</p>
+    <p>
+        <strong>Periode prediksi:</strong>
+        {% if start_year %}
+            dimulai dari tahun {{ start_year }}, selama {{ years_ahead }} tahun ke depan
+        {% else %}
+            {{ years_ahead }} tahun ke depan dari tahun terakhir di dataset
+        {% endif %}
+    </p>
+
+    <h2>Data Riwayat (10 data terakhir)</h2>
+    <table>
+        <thead>
+        <tr>
+            <th>Tanggal</th>
+            <th>Volume</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for row in history %}
+            <tr>
+                <td>{{ row.tanggal }}</td>
+                <td>{{ row.volume }}</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <h2>Hasil Prediksi</h2>
+    <table>
+        <thead>
+        <tr>
+            <th>Tanggal</th>
+            <th>Volume (Prediksi)</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for p in preds %}
+            <tr>
+                <td>{{ p.tanggal }}</td>
+                <td>{{ p.prediksi_volume }}</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="/" class="btn-back">← Kembali</a>
+</div>
+</body>
+</html>
